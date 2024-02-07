@@ -1,12 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./style.css";
 import Header from "../Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import JoditEditor from 'jodit-react';
 
 const CreateArticle = () => {
+ 
+
   const navigate = useNavigate();
   const [articleData, setArticleData] = useState({
     title: "",
@@ -66,20 +69,27 @@ const CreateArticle = () => {
           rows="2"
         ></textarea>
         <label htmlFor="">Markdown</label>
-        <textarea
+        <JoditEditor
+          name="markdown"
+          value={articleData.markdown}
+          onChange={handleChange}
+         />
+        {/* <textarea
           name="markdown"
           id=""
           value={articleData.markdown}
           onChange={handleChange}
           cols="30"
           rows="10"
-        ></textarea>
+        ></textarea> */}
 
         <div className="but">
           <Link to="/">
-          <button className="cnbtn">Cancel</button>
+            <button className="cnbtn">Cancel</button>
           </Link>
-          <button onClick={handleSubmit} className="savebtn">Save</button>
+          <button onClick={handleSubmit} className="savebtn">
+            Save
+          </button>
         </div>
       </div>
     </>
