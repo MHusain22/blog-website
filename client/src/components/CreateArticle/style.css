@@ -1,0 +1,38 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main label {
+  margin: 40px 0 10px 0;
+}
+
+.main input {
+  height: 30px;
+}
+
+.but {
+  margin-top: 30px;
+  /* display: flex;
+    justify-content: space-between; */
+}
+.but button {
+  padding: 10px 20px 10px 20px;
+}
+.cnbtn {
+  background: linear-gradient(to right, #ef5353, #ec8e8e);
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.savebtn {
+  background: linear-gradient(to right, #6aa0f1, #b7cbff);
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+}

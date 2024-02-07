@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main label {
+  margin: 40px 0 10px 0;
+}
+
+.main input {
+  height: 30px;
+}
+
+.but {
+  margin-top: 30px;
+}
