@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => (
   <header className="home-header">
     <h1>
-      <span>Blog</span>
+      <span>justBlog</span>
     </h1>
     <div className="nav">
       <ul>
