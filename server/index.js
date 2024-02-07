@@ -95,7 +95,9 @@ app.get('/search', async (req, res) => {
 });
 app.delete("/:id", async (req, res) => {
   const { id } = req.params;
+  //to get id
   // console.log(id);
+  
   try {
     // Delete the article from the database
     await Article.findByIdAndDelete(id);
