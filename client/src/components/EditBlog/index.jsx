@@ -5,6 +5,7 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import API_URL from "../Util/backend";
 
 const EditBlog = () => {
 
@@ -19,7 +20,8 @@ const EditBlog = () => {
       useEffect(() => {
         const fetchArticle = async () => {
           try {
-            const response = await axios.get(`http://localhost:5000/${id}`);
+            // const response = await axios.get(`http://localhost:5000/${id}`);
+            const response = await axios.get(API_URL+`/${id}`);
             setArticleData(response.data);
           } catch (error) {
             console.error('Error fetching article:', error);
@@ -37,7 +39,7 @@ const EditBlog = () => {
         e.preventDefault();
     
         try {
-          await axios.put(`http://localhost:5000/${id}`, articleData);
+          await axios.put(API_URL+`/${id}`, articleData);
           console.log('Article updated successfully!');
           navigate("/");
           // Optionally, you can redirect the user to another page or perform other actions after successful update

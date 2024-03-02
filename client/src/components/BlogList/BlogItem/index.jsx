@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Chip from "../../common/Chip";
 import "./styles.css";
+import API_URL from "../../Util/backend";
 
 const BlogItem = () => {
   const [articles, setArticles] = useState([]);
@@ -11,7 +12,7 @@ const BlogItem = () => {
   const handleDelete = async (id) => {
     console.log(id);
     try {
-      await axios.delete(`http://localhost:5000/${id}`);
+      await axios.delete(API_URL+`/${id}`);
       setIsDelete(true);
       // Notify parent component that the article has been deleted
     } catch (error) {

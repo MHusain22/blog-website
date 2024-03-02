@@ -5,11 +5,10 @@ import Header from "../Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import JoditEditor from 'jodit-react';
+import API_URL from "../Util/backend";
 
 const CreateArticle = () => {
- 
-
+  
   const navigate = useNavigate();
   const [articleData, setArticleData] = useState({
     title: "",
@@ -29,7 +28,7 @@ const CreateArticle = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/createarticles",
+        API_URL+"/createarticles",
         articleData
       );
 
@@ -69,19 +68,15 @@ const CreateArticle = () => {
           rows="2"
         ></textarea>
         <label htmlFor="">Markdown</label>
-        <JoditEditor
-          name="markdown"
-          value={articleData.markdown}
-          onChange={handleChange}
-         />
-        {/* <textarea
+        
+        <textarea
           name="markdown"
           id=""
           value={articleData.markdown}
           onChange={handleChange}
           cols="30"
           rows="10"
-        ></textarea> */}
+        ></textarea>
 
         <div className="but">
           <Link to="/">

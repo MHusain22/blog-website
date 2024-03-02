@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import API_URL from "../Util/backend";
 
 const Blog = () => {
   const { id } = useParams();
@@ -11,7 +12,8 @@ const Blog = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/${id}`);
+        // const response = await axios.get(`http://localhost:5000/${id}`);
+        const response = await axios.get(API_URL+`/${id}`);
         setArticle(response.data);
       } catch (error) {
         console.error("Error fetching article:", error);
