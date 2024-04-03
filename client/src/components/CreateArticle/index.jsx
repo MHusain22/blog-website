@@ -28,7 +28,7 @@ const CreateArticle = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        API_URL+"/createarticles",
+        `${API_URL}/createarticles`,
         articleData
       );
 

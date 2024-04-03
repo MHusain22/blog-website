@@ -3,7 +3,11 @@
   display: flex;
   justify-content: space-between;
 }
-
+.home-header span {
+  background: linear-gradient(103.9deg, rgba(163, 14, 128, 0.709), rgb(69, 69, 214));
+  padding: 10px;
+  border-radius: 5px;
+}
 .nav ul {
   display: flex;
   justify-content: space-between;

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 const Header = () => (
   <header className="home-header">
-    <h1>
-      <span>justBlog</span>
+    <h1 style={{ color: "black" }}>
+      just
+      <span>Blog</span>
     </h1>
     <div className="nav">
       <ul>

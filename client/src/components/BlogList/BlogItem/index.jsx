@@ -13,12 +13,15 @@ const BlogItem = () => {
     console.log(id);
     try {
       await axios.delete(API_URL+`/${id}`);
+      // await axios.delete(API_URL+`delit/${id}`);
       setIsDelete(true);
       // Notify parent component that the article has been deleted
     } catch (error) {
       console.error("Error deleting article:", error);
     }
   };
+
+  
 
   useEffect(() => {
     // Fetch data when the component mounts

@@ -8,20 +8,15 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(cors({origin: process.env.FRONTEND_URL,});
-app.use(
-  cors({
-    origin:  process.env.FRONTEND_URL, // Replace with your frontend URL
-  })
-);
+app.use(cors("http://localhost:3000"));
+// app.use(
+//   cors({
+//     origin:  process.env.FRONTEND_URL, // Replace with your frontend URL
+//   })
+// );
 dotenv.config();
 
-mongoose.connect(
-  process.env.MONGO_URI,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
-);
+mongoose.connect(process.env.MONGO_URI);
 
 const articleSchema = new mongoose.Schema({
   title: String,
@@ -70,39 +65,43 @@ app.get("/:id", async (req, res) => {
   }
 });
 
-app.put('/:id', async (req, res) => {
+app.put("/:id", async (req, res) => {
   const { id } = req.params;
   // const { title, description, markdown } = req.body;
-  // console.log(title);
+  console.log(id);
   try {
     // Find the article by ID and update it with the new data
-    const updatedArticle = await Article.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedArticle = await Article.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
 
     if (!updatedArticle) {
-      return res.status(404).json({ message: 'Article not found' });
+      return res.status(404).json({ message: "Article not found" });
     }
 
     res.json(updatedArticle);
   } catch (error) {
-    console.error('Error updating article:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error("Error updating article:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
-app.get('/search', async (req, res) => {
+app.get("/search", async (req, res) => {
   try {
     // Retrieve blog posts from the database (e.g., using Mongoose for MongoDB)
     const blogPosts = await Article.find();
     res.json(blogPosts);
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error("Error fetching blog posts:", error);
+    res.status(500).json({ message: "Server error" });
   }
 });
+
+
 app.delete("/:id", async (req, res) => {
   const { id } = req.params;
   //to get id
-  // console.log(id);
-  
+  console.log(id);
+
   try {
     // Delete the article from the database
     await Article.findByIdAndDelete(id);
