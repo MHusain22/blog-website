@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Chip from "../../common/Chip";
 import "./styles.css";
 import API_URL from "../../Util/backend";
 
@@ -27,7 +26,7 @@ const BlogItem = () => {
     // Fetch data when the component mounts
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/getarticles");
+        const response = await axios.get(`${API_URL}/getarticles`);
         setArticles(response.data);
         setIsDelete(false);
       } catch (error) {
